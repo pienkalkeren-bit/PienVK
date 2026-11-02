@@ -1,70 +1,92 @@
 const hamburger = document.querySelector('.hamburger');
 const nav = document.querySelector('nav');
-let currentSlide = 0;
-const slides = document.querySelectorAll('.carousel img'); 
-const totalSlides = slides.length; 
-const prevButton = document.querySelector('.prev');
-const nextButton = document.querySelector('.next');
 
-if (hamburger) {
+if (hamburger && nav) {
     hamburger.addEventListener('click', () => {
         nav.classList.toggle('active');
     });
 }
 
+function getCarouselState(carousel) {
+    if (!carousel) return null;
 
-function moveSlide(step) {
+    const slides = Array.from(carousel.querySelectorAll('img'));
+    if (!slides.length) return null;
 
-    currentSlide += step;
-
-  
-    if (currentSlide < 0) {
-        currentSlide = totalSlides - 1; 
-    } else if (currentSlide >= totalSlides) {
-        currentSlide = 0; 
-    }
-
-    updateCarousel(); 
+    return {
+        carousel,
+        slides,
+        currentSlide: Number(carousel.dataset.currentSlide || 0)
+    };
 }
 
-function updateCarousel() {
-    const carousel = document.querySelector('.carousel'); 
-    const slideWidth = slides[0].offsetWidth; 
+function updateCarousel(carousel) {
+    const state = getCarouselState(carousel);
+    if (!state) return;
 
-   
-    carousel.style.transition = "transform 0.5s ease-in-out"; 
-    carousel.style.transform = `translateX(-${currentSlide * slideWidth}px)`; 
+    const slideWidth = state.slides[0].getBoundingClientRect().width;
+    state.carousel.style.transition = 'transform 0.5s ease-in-out';
+    state.carousel.style.transform = `translateX(-${state.currentSlide * slideWidth}px)`;
 }
 
+function moveSlide(step, carousel) {
+    const state = getCarouselState(carousel);
+    if (!state) return;
 
-if (prevButton && nextButton) {
-    prevButton.addEventListener('click', () => moveSlide(-1));
-    nextButton.addEventListener('click', () => moveSlide(1));
+    state.currentSlide = (state.currentSlide + step + state.slides.length) % state.slides.length;
+    state.carousel.dataset.currentSlide = String(state.currentSlide);
+    updateCarousel(state.carousel);
 }
 
+function moveSlideMobile(step) {
+    const button = (typeof event !== 'undefined' && event.target)
+        ? event.target.closest('.prev, .next')
+        : document.activeElement && document.activeElement.closest('.prev, .next');
+    const carousel = button
+        ? button.closest('.carousel-container')?.querySelector('.carousel')
+        : document.querySelector('.carousel');
 
-window.addEventListener('resize', updateCarousel);
-
-
-window.addEventListener('load', updateCarousel);
-
-
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = htmlspecialchars($_POST['name']);
-    $email = htmlspecialchars($_POST['email']);
-    $message = htmlspecialchars($_POST['message']);
-
-    $to = "jouw-email@example.com";
-    $subject = "Nieuw bericht van contactformulier";
-    $body = "Naam: $name\nE-mail: $email\nBericht: $message";
-    $headers = "From: $email";
-
-    if (mail($to, $subject, $body, $headers)) {
-        echo = "Bericht succesvol verstuurd!";
-    } else {
-        echo = "Er is iets misgegaan bij het versturen van je bericht.";
-    }
+    moveSlide(step, carousel);
 }
+
+document.querySelectorAll('.carousel').forEach((carousel) => {
+    const slides = Array.from(carousel.querySelectorAll('img'));
+
+    slides.forEach((img, index) => {
+        if (img.parentElement?.tagName === 'FIGURE') return;
+
+        const figure = document.createElement('figure');
+        const caption = document.createElement('figcaption');
+        const label = (img.alt && img.alt.trim()) || `Screen ${index + 1}`;
+
+        figure.className = 'project-slide';
+        caption.textContent = label;
+
+        img.parentNode.insertBefore(figure, img);
+        figure.appendChild(img);
+        figure.appendChild(caption);
+    });
+
+    carousel.dataset.currentSlide = '0';
+    updateCarousel(carousel);
+});
+
+document.querySelectorAll('.prev, .next').forEach((button) => {
+    button.onclick = null;
+
+    button.addEventListener('click', () => {
+        const carousel = button.closest('.carousel-container')?.querySelector('.carousel');
+        const direction = button.classList.contains('next') ? 1 : -1;
+        moveSlide(direction, carousel);
+    });
+});
+
+window.addEventListener('resize', () => {
+    document.querySelectorAll('.carousel').forEach(updateCarousel);
+});
+
+window.addEventListener('load', () => {
+    document.querySelectorAll('.carousel').forEach(updateCarousel);
+});
 
 

@@ -975,30 +975,59 @@ body.boekenzoeker main {
   padding: 10rem 0 8rem;
 }
 
+body.boekenzoeker main > div {
+  display: grid;
+  gap: 1.5rem;
+}
+
 body.boekenzoeker section {
-  margin-bottom: 3rem;
-  padding: clamp(1.5rem, 4vw, 3.5rem) 0;
-  border-bottom: 1px solid var(--line);
+  margin-bottom: 0;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 1.25rem;
+  background: rgba(17,17,17,.72);
+  box-shadow: 0 24px 60px rgba(0,0,0,.2);
+}
+
+body.boekenzoeker .hero {
+  padding: 0;
+  border: 0;
   border-radius: 0;
   background: transparent;
   box-shadow: none;
 }
 
-body.boekenzoeker section:nth-child(odd) {
-  background: transparent;
+body.boekenzoeker .hero-text {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4rem);
+  padding: clamp(1.5rem, 3vw, 2rem) 0 0;
 }
 
-body.boekenzoeker section:first-of-type img {
+body.boekenzoeker .hero img {
   width: 100%;
-  height: auto;
+  max-height: 620px;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 1.5rem;
+  box-shadow: 0 26px 60px rgba(0,0,0,.25);
+  background: linear-gradient(135deg, rgba(198,184,165,.08), rgba(255,255,255,0));
 }
 
-body.boekenzoeker h1 {
-  margin: 1rem 0 2rem;
+body.boekenzoeker .hero h1 {
+  margin: 0 0 1rem;
   color: var(--text);
   background: none;
   font-size: clamp(3rem, 7vw, 7rem);
   letter-spacing: -.08em;
+}
+
+body.boekenzoeker .hero p {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+  line-height: 1.7;
 }
 
 body.boekenzoeker img {
@@ -1008,7 +1037,8 @@ body.boekenzoeker img {
 body.boekenzoeker main h3 {
   margin-bottom: 1rem;
   color: var(--text);
-  font-size: clamp(1.3rem, 2vw, 2rem);
+  font-size: clamp(1.35rem, 2vw, 2.2rem);
+  letter-spacing: -.05em;
 }
 
 body.boekenzoeker main p,
@@ -1023,69 +1053,193 @@ body.boekenzoeker main p {
 }
 
 body.boekenzoeker main ul {
-  margin: 1.5rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem;
+  margin: 1.5rem 0 0;
   list-style: none;
 }
 
 body.boekenzoeker main section:nth-of-type(4) ul li {
-  display: block;
+  display: inline-flex;
   margin: 0;
-  padding: .8rem 0;
-  border-bottom: 1px solid var(--line);
-  border-radius: 0;
-  background: transparent;
+  padding: .65rem 1rem;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 999px;
+  background: rgba(255,255,255,.02);
   box-shadow: none;
   color: var(--muted);
-  font-size: 1rem;
-  transition: color .25s ease;
+  font-size: 0.9rem;
+  transition: border-color .25s ease, color .25s ease, transform .25s ease;
 }
 
 body.boekenzoeker main section:nth-of-type(4) ul li:hover {
-  transform: none;
-  background: transparent;
+  transform: translateY(-1px);
+  background: rgba(255,255,255,.02);
   color: var(--accent);
+  border-color: rgba(198,184,165,.65);
 }
 
 body.boekenzoeker main section:nth-of-type(4) ul li::before {
-  content: 'â€”';
-  margin-right: .8rem;
-  color: var(--accent);
-  font-size: 1rem;
+  display: none;
 }
 
 body.boekenzoeker main a {
-  margin-right: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: .25rem 1rem .25rem 0;
+  padding: .8rem 1.2rem;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 999px;
+  background: transparent;
   color: var(--text);
-  font-weight: 400;
-  text-decoration: underline;
-  text-decoration-color: var(--line);
-  text-underline-offset: .25rem;
+  font-family: var(--mono);
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: border-color .25s ease, color .25s ease, transform .25s ease, background .25s ease;
 }
 
 body.boekenzoeker main a:hover {
   color: var(--accent);
+  border-color: rgba(198,184,165,.8);
+  background: rgba(198,184,165,.04);
+  transform: translateY(-1px);
+}
+
+body.boekenzoeker .mobiel-carousel-container {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem 0 2rem;
+}
+
+body.boekenzoeker .mobiel-carousel-container::before {
+  content: '';
+  position: absolute;
+  inset: 1rem 0 auto 0;
+  height: calc(100% - 1rem);
+  border: 1px solid rgba(198,184,165,.12);
+  border-radius: 2rem;
+  pointer-events: none;
+}
+
+@media (max-width: 800px) {
+  body.boekenzoeker main {
+    width: calc(100% - 2rem);
+    padding-top: 8rem;
+  }
+
+  body.boekenzoeker .hero-text {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  body.boekenzoeker main {
+    width: calc(100% - 1.5rem);
+  }
+
+  body.boekenzoeker section {
+    padding: 1.25rem 1rem;
+  }
+
+  body.boekenzoeker main a {
+    width: 100%;
+    margin-right: 0;
+  }
 }
 
 /* Image carousels â€” retain existing controls */
 .carousel-container {
   position: relative;
-  width: 100%;
-  max-width: 900px;
+  width: min(100%, 1100px);
+  max-width: 1100px;
   margin: 2rem auto;
+  padding: 2rem 1.5rem 2.5rem;
   overflow: hidden;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 2rem;
+  background:
+    linear-gradient(180deg, rgba(18,18,18,.9), rgba(10,10,10,.78)),
+    radial-gradient(circle at top left, rgba(198,184,165,.12), transparent 40%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,.02) 0,
+      rgba(255,255,255,.02) 1px,
+      transparent 1px,
+      transparent 84px
+    );
+  box-shadow: 0 30px 70px rgba(0,0,0,.2);
+}
+
+.carousel-container::before {
+  content: 'Screens & process';
+  position: absolute;
+  top: .9rem;
+  left: 1.35rem;
+  z-index: 2;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.carousel-container::after {
+  content: '';
+  position: absolute;
+  right: 1.5rem;
+  top: 1.2rem;
+  width: 120px;
+  height: 120px;
+  border: 1px solid rgba(198,184,165,.16);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .carousel {
   display: flex;
   transition: transform .5s ease;
+  padding-top: 2.2rem;
+}
+
+.project-slide {
+  position: relative;
+  flex: 0 0 100%;
+  margin: 0;
+  padding: 0 0.25rem;
 }
 
 .carousel img {
   width: 100%;
   height: auto;
-  max-height: 75vh;
+  max-height: 78vh;
   flex: 0 0 100%;
-  object-fit: contain;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 1.1rem;
+  box-shadow: 0 30px 55px rgba(0,0,0,.22);
+}
+
+.carousel figcaption {
+  position: absolute;
+  left: 1.4rem;
+  bottom: 1rem;
+  max-width: min(72%, 340px);
+  padding: .5rem .8rem;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 999px;
+  background: rgba(9,9,9,.45);
+  backdrop-filter: blur(8px);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: .58rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
 }
 
 button.prev,
