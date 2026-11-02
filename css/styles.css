@@ -435,38 +435,113 @@ header nav ul li a[aria-current="page"] {
   letter-spacing: -.07em;
 }
 
-.home section:nth-of-type(4) ul {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0 2rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+.creative-mix {
+  padding: clamp(5rem, 9vw, 9rem) var(--gutter);
+  background: var(--surface);
 }
 
-.home section:nth-of-type(4) ul li {
-  min-height: 0;
-  display: block;
-  padding: 1.2rem 0;
-  border-bottom: 1px solid var(--line);
-  border-radius: 0;
-  background: transparent;
-  box-shadow: none;
+.creative-mix h2 {
+  margin-bottom: 2.5rem;
   color: var(--text);
-  font-size: 1.1rem;
-  text-align: left;
-  cursor: default;
-  transition: color .25s ease;
+  background: none;
+  font-size: clamp(2.7rem, 6vw, 6rem);
+  letter-spacing: -.07em;
 }
 
-.home section:nth-of-type(4) ul li:hover {
-  transform: none;
-  box-shadow: none;
+.ingredient-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.ingredient-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .55rem;
+  min-height: 180px;
+  padding: 1.15rem 1rem 1.1rem;
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 1.2rem;
+  background: linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,0));
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
+  color: var(--text);
+  transition: transform .25s ease, border-color .25s ease;
+}
+
+.ingredient-card:nth-child(odd) {
+  transform: rotate(-.6deg);
+}
+
+.ingredient-card:nth-child(even) {
+  transform: rotate(.6deg);
+}
+
+.ingredient-card:hover {
+  transform: translateY(-4px) rotate(0deg);
+  border-color: rgba(198,184,165,.4);
+}
+
+.ingredient-card::before {
+  content: '∎';
+  position: absolute;
+  right: .9rem;
+  top: .8rem;
+  color: rgba(198,184,165,.55);
+  font-size: 1rem;
+  opacity: .8;
+}
+
+.ingredient-card span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 1px solid rgba(198,184,165,.32);
+  border-radius: 50%;
+  background: rgba(198,184,165,.04);
   color: var(--accent);
+  font-family: var(--mono);
+  font-size: .58rem;
+  letter-spacing: .08em;
 }
 
-.home section:nth-of-type(4) ul li svg {
-  display: none;
+.ingredient-card strong {
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: -.04em;
+}
+
+.ingredient-card small {
+  color: var(--muted);
+  font-size: .8rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 800px) {
+  .ingredient-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .ingredient-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .creative-mix::before,
+  .creative-mix::after {
+    opacity: .35;
+  }
+
+  .ingredient-card:nth-child(odd),
+  .ingredient-card:nth-child(even) {
+    transform: none;
+  }
 }
 
 /* Intro and project overview */
@@ -638,12 +713,49 @@ header nav ul li a[aria-current="page"] {
   background: transparent;
 }
 
+.image-right {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: linear-gradient(135deg, rgba(198,184,165,.05), rgba(255,255,255,0));
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 2rem;
+}
+
+.image-right::before,
+.image-right::after {
+  content: '';
+  position: absolute;
+  border: 1px solid rgba(198,184,165,.2);
+  pointer-events: none;
+}
+
+.image-right::before {
+  inset: 1rem 1.4rem auto auto;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.image-right::after {
+  inset: auto auto -1rem -1rem;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+
 .image-right img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   max-width: none;
-  border-radius: 0;
-  box-shadow: none;
+  min-height: 520px;
+  border-radius: 1.5rem;
+  box-shadow: 0 30px 60px rgba(0,0,0,.26);
+  object-fit: cover;
   animation: none;
+  border: 1px solid rgba(255,255,255,.08);
 }
 
 /* Skills page */
@@ -930,42 +1042,98 @@ body.contactformulier .social-media ul li a:hover {
   transform: none;
 }
 
+.contact-fun {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
+  align-items: center;
+  gap: 2rem;
+  padding: clamp(5rem, 9vw, 9rem) var(--gutter);
+  background: var(--surface);
+}
+
+.contact-fun-copy small {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.contact-fun-copy h2 {
+  max-width: 12ch;
+  margin-bottom: 1rem;
+  color: var(--text);
+  background: none;
+  font-size: clamp(2.5rem, 5vw, 5.4rem);
+  letter-spacing: -.07em;
+}
+
+.contact-fun-copy p {
+  max-width: 38rem;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  line-height: 1.7;
+}
+
 .contact-icons {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
   gap: 1rem;
-  margin-top: 2rem;
+  margin-top: 0;
 }
 
 .contact-icon {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: .8rem;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  background: transparent;
+  gap: .75rem;
+  min-width: 170px;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 999px;
+  background: rgba(255,255,255,.02);
   box-shadow: none;
   color: var(--text);
-  transition: border-color .25s ease, color .25s ease;
+  transition: border-color .25s ease, transform .25s ease, color .25s ease;
+}
+
+.contact-icon span {
+  font-family: var(--mono);
+  font-size: .7rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
 }
 
 .contact-icon svg {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   fill: currentColor;
 }
 
 .contact-icon:hover {
-  transform: none;
-  border-color: var(--accent);
+  transform: translateY(-2px);
+  border-color: rgba(198,184,165,.5);
   box-shadow: none;
   color: var(--accent);
 }
 
 .contact-icon:hover svg {
   fill: currentColor;
+}
+
+@media (max-width: 800px) {
+  .contact-fun {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-icon {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* Project detail page â€” bookszoeker legacy page */
