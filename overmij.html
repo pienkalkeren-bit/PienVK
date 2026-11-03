@@ -26,122 +26,116 @@
     </header>
 
     <section class="intro">
-        <h1>Pleased to meet you!</h1>
-        <p>I am an aspiring software developer & designer, always looking for creative ways to use technology for the future.</p>
-        <a href="#photo-section" class="scroll-btn">↓</a>
+        <p class="eyebrow">Designer • athlete • nature lover</p>
+        <h1>I design <span>human</span> experiences that move people.</h1>
     </section>
    
     <section class="photo-section">
         <div class="text-left">
             <h2>About Me</h2>
             <p>
-                <span>My name is Pien van Kalkeren, and I’m 21 years old, currently in my second year of the Communication and Multimedia Design program at the University of Applied Sciences in Amsterdam. I have developed a strong foundation in coding, UI/UX design, and a broad range of design skills.
-
-                    I’m passionate about blending technology and creativity to craft meaningful digital experiences. I strive to incorporate sustainability and technical innovation into my work, drawing from my background in animal studies and my experience at a tech company that not only produces excellent work but also champions sustainability and strives to make a positive impact on the world.
+                My name is Pien van Kalkeren, and I’m a designer who is driven by meaningful impact. I love nature, animals, and the feeling of being fully present in the world around me. Those things shape the way I work and the kind of experiences I want to create.
             </p>
             <p>
-                When I am not designing digitally, I am learning new tips & tricks or working on eco-friendly projects. 
-                My passion for sustainability inspires me to create solutions that benefit both users and the planet.
+                Running, powerlifting, and climbing are a big part of my life. They give me energy, push me beyond my comfort zone, and help me grow in a way that feels real. I love what it does to me: it challenges me, strengthens me, and reminds me that growth often starts when I stop playing safe.
+            </p>
+            <p>
+                That same mindset is what I want to reflect in my designs. I want my work to feel alive, thoughtful, and strong—something that gives people energy and helps them move forward. I care about creating digital experiences that are not only beautiful, but also useful, human, and connected to the world we live in.
             </p>
             <a href="https://drive.google.com/file/d/1Zr5fMPQn6hrIlQsejtyiQdr0N2tYj7mP/view?usp=sharing">Download my CV</a>
         </div>
         <div class="image-right">
-            <img src="./images/pien-portrait.jpg" alt="My photo"/>
+             <img src="./Image/pienportrait.jpg" alt="Pien van Kalkeren" />
         </div>
     </section>
     
-    <section class="skills-section">
-        <div class="skill">
-            <h3>Adobe Photoshop</h3>
-            <div class="progress-bar">
-                <div class="progress photoshop"></div>
+    <section class="story-reveal">
+        <p class="mini-label">A little more of me</p>
+
+        <div class="story-picker">
+            <input type="radio" name="story-choice" id="story-animals" checked>
+            <input type="radio" name="story-choice" id="story-movement">
+            <input type="radio" name="story-choice" id="story-design">
+
+            <div class="story-options">
+                <label class="story-option" for="story-animals">
+                    <span>Animals</span>
+                    <em>Click to explore</em>
+                </label>
+                <label class="story-option" for="story-movement">
+                    <span>Movement</span>
+                    <em>Click to explore</em>
+                </label>
+                <label class="story-option" for="story-design">
+                    <span>Design</span>
+                    <em>Click to explore</em>
+                </label>
             </div>
-            <p class="percentage">60%</p>
+
+            <div class="story-panels">
+                <article class="story-panel story-animals">
+                    <img src="./Image/oceanapp1.png" alt="Animals and nature" />
+                    <p>I’ve always felt a deep connection to animals and the natural world. They remind me to slow down, be patient, and care for the life around me.</p>
+                </article>
+
+                <article class="story-panel story-movement">
+                    <img src="./Image/klusswap2scherm.jpg" alt="Movement and sport" />
+                    <p>Running, powerlifting, and climbing keep me grounded. They remind me that growth often happens just outside my comfort zone.</p>
+                </article>
+
+                <article class="story-panel story-design">
+                    <img src="./Image/Zennder1scherm.jpg" alt="Design and digital work" />
+                    <p>I design for people, not just screens. I want my work to feel human, helpful, and meaningful in the real world.</p>
+                </article>
+            </div>
         </div>
-    
-        <div class="skill">
-            <h3>Adobe Illustrator</h3>
-            <div class="progress-bar">
-                <div class="progress illustrator"></div>
-            </div>
-            <p class="percentage">75%</p>
-        </div>
-    
-        <div class="skill">
-            <h3>Adobe InDesign</h3>
-            <div class="progress-bar">
-                <div class="progress indesign"></div>
-            </div>
-            <p class="percentage">30%</p>
-        </div>
-    
-        <div class="skill">
-            <h3>Adobe XD</h3>
-            <div class="progress-bar">
-                <div class="progress xd"></div>
-            </div>
-            <p class="percentage">30%</p>
-        </div>
-    
-        <div class="skill">
-            <h3>Adobe After Effects</h3>
-            <div class="progress-bar">
-                <div class="progress after-effects"></div>
-            </div>
-            <p class="percentage">30%</p>
-        </div>
-    
-        <div class="skill">
-            <h3>Figma</h3>
-            <div class="progress-bar">
-                <div class="progress figma"></div>
-            </div>
-            <p class="percentage">85%</p>
-        </div>
-    
-        <div class="skill">
-            <h3>Sketch</h3>
-            <div class="progress-bar">
-                <div class="progress sketch"></div>
-            </div>
-            <p class="percentage">50%</p>
-        </div>
-    
-        <div class="skill">
-            <h3>Adobe Lightroom</h3>
-            <div class="progress-bar">
-                <div class="progress lightroom"></div>
-            </div>
-            <p class="percentage">70%</p>
+    </section>
+
+    <section class="skills-section personality-grid">
+        <p class="mini-label">What drives me</p>
+        <div class="tag-row">
+            <span class="skill-tag">Nature</span>
+            <span class="skill-tag">Animals</span>
+            <span class="skill-tag">Running</span>
+            <span class="skill-tag">Powerlifting</span>
+            <span class="skill-tag">Climbing</span>
+            <span class="skill-tag">Growth</span>
+            <span class="skill-tag">Energy</span>
+            <span class="skill-tag">Impact</span>
+            <span class="skill-tag">Creativity</span>
+            <span class="skill-tag">Sustainability</span>
         </div>
     </section>
     
     
     
     <section class="vaardigheden-sectie">
-        <section class="vaardigheden-content">
-            <article>
-                <h3>Languages</h3>
-                <ul>
-                    <li><strong>Dutch</strong>: Native speaker</li>
-                    <li><strong>English</strong>: B1-B2</li>
-                    <li><strong>Japanese</strong>: In learning process</li>
+        <div class="vaardigheden-content">
+            <article class="language-card">
+                <p class="mini-label">Languages</p>
+                <ul class="language-list">
+                    <li>
+                        <span>Dutch</span>
+                        <em>Native</em>
+                    </li>
+                    <li>
+                        <span>English</span>
+                        <em>B1–B2</em>
+                    </li>
+                    <li>
+                        <span>Japanese</span>
+                        <em>Learning</em>
+                    </li>
                 </ul>
             </article>
-    
-            <article>
-                <h3>Skillset</h3>
-                <ul>
-                    <li>Brainstorming</li>
-                    <li>Prototyping</li>
-                    <li>UI Design</li>
-                    <li>UX Design</li>
-                    <li>Perseverance</li>
-                    <li>User research</li>
-                    <li>Teamwork</li>
-                </ul>
+
+            <article class="strength-card">
+                <p class="mini-label">My approach</p>
+                <blockquote>
+                    I design with heart, curiosity, and the courage to make things better.
+                </blockquote>
             </article>
-        </section>
+        </div>
     </section>
     
     

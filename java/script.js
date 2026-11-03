@@ -85,6 +85,21 @@ window.addEventListener('resize', () => {
     document.querySelectorAll('.carousel').forEach(updateCarousel);
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const storyPicker = document.querySelector('.story-picker');
+    if (!storyPicker) return;
+
+    const inputs = Array.from(storyPicker.querySelectorAll('input[type="radio"]'));
+    inputs.forEach((input) => {
+        input.addEventListener('change', () => {
+            inputs.forEach((otherInput) => {
+                const label = storyPicker.querySelector(`label[for="${otherInput.id}"]`);
+                if (label) label.setAttribute('aria-selected', otherInput.checked ? 'true' : 'false');
+            });
+        });
+    });
+});
+
 window.addEventListener('load', () => {
     document.querySelectorAll('.carousel').forEach(updateCarousel);
 });
