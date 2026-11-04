@@ -1570,16 +1570,25 @@ body.boekenzoeker main a:hover {
 
 body.boekenzoeker .mobiel-carousel-container {
   position: relative;
+  width: min(100%, 1100px);
   max-width: 1100px;
   margin: 0 auto;
   padding: 1.5rem 0 2rem;
 }
 
+body.boekenzoeker .mobiel-carousel-container > h3 {
+  display: block;
+  width: min(100%, 1100px);
+  margin: 0 auto 1rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
 body.boekenzoeker .mobiel-carousel-container::before {
   content: '';
   position: absolute;
-  inset: 1rem 0 auto 0;
-  height: calc(100% - 1rem);
+  inset: 4.4rem 0 auto 0;
+  height: calc(100% - 4.4rem);
   border: 1px solid rgba(198,184,165,.12);
   border-radius: 2rem;
   pointer-events: none;
@@ -1616,8 +1625,8 @@ body.boekenzoeker .mobiel-carousel-container::before {
   position: relative;
   width: min(100%, 1100px);
   max-width: 1100px;
-  margin: 2rem auto;
-  padding: 2rem 1.5rem 2.5rem;
+  margin: 0 auto;
+  padding: 2.2rem 1.5rem 2.5rem;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,.08);
   border-radius: 2rem;
