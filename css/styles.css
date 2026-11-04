@@ -201,12 +201,12 @@ header nav ul li a[aria-current="page"] {
 /* Home â€” editorial hero */
 .home section:first-of-type {
   min-height: 100vh;
-  padding: 8rem var(--gutter) 4rem;
+  padding: 8rem var(--gutter) 5.5rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-end;
-  gap: 1.25rem;
+  gap: 1.9rem;
   text-align: left;
   color: var(--text);
   background: var(--bg);
@@ -221,16 +221,24 @@ header nav ul li a[aria-current="page"] {
 .home section:first-of-type h1 {
   position: relative;
   z-index: 1;
-  max-width: 11ch;
+  display: flex;
+  flex-direction: column;
+  gap: .08em;
+  max-width: 12ch;
   padding: 0;
   margin: 0;
   color: var(--text);
   background: none;
   font-size: clamp(4.2rem, 9vw, 8.5rem);
   font-weight: 500;
-  line-height: .9;
+  line-height: .88;
   letter-spacing: -.08em;
   animation: none;
+}
+
+.home section:first-of-type h1 span {
+  display: block;
+  white-space: nowrap;
 }
 
 .home section:first-of-type h1 em {
@@ -242,11 +250,11 @@ header nav ul li a[aria-current="page"] {
 .home section:first-of-type p {
   position: relative;
   z-index: 1;
-  max-width: 34rem;
-  margin: .25rem 0 0;
+  max-width: 31rem;
+  margin: .65rem 0 0;
   color: #aaa7a0;
-  font-size: clamp(.96rem, 1.3vw, 1.1rem);
-  line-height: 1.6;
+  font-size: clamp(.9rem, 1.15vw, 1rem);
+  line-height: 1.55;
 }
 
 .home section:first-of-type a {
@@ -255,8 +263,8 @@ header nav ul li a[aria-current="page"] {
   display: inline-flex;
   align-items: center;
   gap: .8rem;
-  margin-top: .4rem;
-  padding: 0 0 .45rem;
+  margin-top: 1.4rem;
+  padding: 0 0 .6rem;
   border: 0;
   border-bottom: 1px solid var(--text);
   border-radius: 0;
