@@ -200,7 +200,7 @@ header nav ul li a[aria-current="page"] {
 
 /* Home â€” editorial hero */
 .home section:first-of-type {
-  min-height: min(760px, 84svh);
+  min-height: 100vh;
   padding: 8rem var(--gutter) 4rem;
   display: flex;
   flex-direction: column;
@@ -304,8 +304,8 @@ header nav ul li a[aria-current="page"] {
   max-width: 55rem;
   margin: 0 0 1rem;
   color: #aaa7a0;
-  font-size: clamp(1.05rem, 1.5vw, 1.35rem);
-  line-height: 1.75;
+  font-size: clamp(.95rem, 1.2vw, 1.1rem);
+  line-height: 1.7;
   animation: none;
 }
 
@@ -600,10 +600,10 @@ header nav ul li a[aria-current="page"] {
   position: absolute;
   inset: 0;
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, .85fr);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
   align-items: center;
-  gap: clamp(1.25rem, 2.4vw, 2rem);
-  padding: 1rem 0;
+  gap: clamp(1rem, 2vw, 1.7rem);
+  padding: .8rem 0;
   opacity: 0;
   pointer-events: none;
   transform: translateY(10px);
@@ -612,13 +612,23 @@ header nav ul li a[aria-current="page"] {
 
 .story-panel img {
   display: block;
-  width: 100%;
-  height: min(42vw, 420px);
-  min-height: 260px;
+  width: min(100%, 620px);
+  height: 100%;
+  max-height: 390px;
+  min-height: 240px;
+  margin-inline: auto;
   object-fit: cover;
+  object-position: center center;
+  transform: scale(1.06);
+  transform-origin: center;
   border: 1px solid rgba(255,255,255,.08);
-  border-radius: 1.4rem;
+  border-radius: 1.2rem;
   box-shadow: 0 20px 45px rgba(0,0,0,.12);
+}
+
+.story-panel.story-movement img {
+  object-position: center 12%;
+  transform: scale(1.08);
 }
 
 .story-panel p {
@@ -657,7 +667,8 @@ header nav ul li a[aria-current="page"] {
   }
 
   .story-panel img {
-    height: 280px;
+    width: 100%;
+    max-height: 280px;
     min-height: 0;
   }
 }
@@ -711,7 +722,7 @@ header nav ul li a[aria-current="page"] {
 .intro h1,
 .intro h2 {
   max-width: 13ch;
-  margin: 0;
+  margin: 0 0 1rem;
   color: var(--text);
   background: none;
   font-size: clamp(3.1rem, 8vw, 7.8rem);
@@ -731,6 +742,7 @@ header nav ul li a[aria-current="page"] {
   margin: 0;
   color: var(--muted);
   font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.6;
 }
 
 .scroll-btn {
@@ -793,7 +805,7 @@ header nav ul li a[aria-current="page"] {
 }
 
 .project-cards article h3 {
-  margin-top: 1.2rem;
+  margin: 1.5rem 0 .8rem;
   color: var(--text);
   background: none;
   font-size: clamp(1.4rem, 2vw, 2rem);
@@ -801,9 +813,10 @@ header nav ul li a[aria-current="page"] {
 }
 
 .project-cards article p {
-  margin-top: .5rem;
+  margin: 0 0 1rem;
   color: var(--muted);
   font-size: .95rem;
+  line-height: 1.7;
 }
 
 .project-cards article a {
@@ -851,14 +864,14 @@ header nav ul li a[aria-current="page"] {
 .text-left h2 {
   margin-bottom: 1.5rem;
   color: var(--text);
-  font-size: clamp(2.3rem, 5vw, 5rem);
+  font-size: clamp(2.7rem, 6vw, 6rem);
   letter-spacing: -.07em;
 }
 
 .text-left p {
   margin-bottom: 1rem;
   color: var(--muted);
-  font-size: clamp(.95rem, 1.18vw, 1.08rem);
+  font-size: clamp(.95rem, 1.2vw, 1.1rem);
   line-height: 1.7;
 }
 
