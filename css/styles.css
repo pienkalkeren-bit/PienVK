@@ -426,11 +426,29 @@ header nav ul li a[aria-current="page"] {
 }
 
 .creative-mix {
+  position: relative;
+  overflow: hidden;
   padding: clamp(5rem, 9vw, 9rem) var(--gutter);
-  background: var(--surface);
+  background:
+    radial-gradient(circle at top left, rgba(198,184,165,.12), transparent 28%),
+    linear-gradient(180deg, rgba(17,17,17,.96), rgba(9,9,9,1));
+}
+
+.creative-mix::before {
+  content: '';
+  position: absolute;
+  inset: 3rem auto auto 5%;
+  width: 22rem;
+  height: 22rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(198,184,165,.22), transparent 60%);
+  filter: blur(24px);
+  pointer-events: none;
 }
 
 .creative-mix h2 {
+  position: relative;
+  z-index: 1;
   margin-bottom: 2.5rem;
   color: var(--text);
   background: none;
@@ -451,38 +469,40 @@ header nav ul li a[aria-current="page"] {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: .55rem;
-  min-height: 180px;
+  justify-content: flex-start;
+  gap: .6rem;
+  min-height: 190px;
   padding: 1.15rem 1rem 1.1rem;
   border: 1px solid rgba(255,255,255,.08);
-  border-radius: 1.2rem;
-  background: linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,0));
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
+  border-radius: 1.35rem;
+  background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.02), 0 18px 30px rgba(0,0,0,.12);
   color: var(--text);
-  transition: transform .25s ease, border-color .25s ease;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
 
 .ingredient-card:nth-child(odd) {
-  transform: rotate(-.6deg);
+  transform: rotate(-.7deg);
 }
 
 .ingredient-card:nth-child(even) {
-  transform: rotate(.6deg);
+  transform: rotate(.7deg);
 }
 
 .ingredient-card:hover {
-  transform: translateY(-4px) rotate(0deg);
-  border-color: rgba(198,184,165,.4);
+  transform: translateY(-6px) rotate(0deg);
+  border-color: rgba(198,184,165,.45);
+  box-shadow: 0 20px 35px rgba(0,0,0,.18);
 }
 
 .ingredient-card::before {
   content: '∎';
   position: absolute;
-  right: .9rem;
+  right: .95rem;
   top: .8rem;
-  color: rgba(198,184,165,.55);
+  color: rgba(198,184,165,.7);
   font-size: 1rem;
-  opacity: .8;
+  opacity: .9;
 }
 
 .ingredient-card::after {
@@ -501,13 +521,22 @@ header nav ul li a[aria-current="page"] {
   transform: translateY(0) scale(1);
 }
 
-.nature-card::after { content: '🌳'; }
+.cooking-card { background: linear-gradient(135deg, rgba(255,195,120,.08), rgba(17,17,17,.95)); }
+.detail-card { background: linear-gradient(135deg, rgba(160,200,255,.08), rgba(17,17,17,.95)); }
+.creative-card { background: linear-gradient(135deg, rgba(239,170,170,.08), rgba(17,17,17,.95)); }
+.writing-card { background: linear-gradient(135deg, rgba(196,163,255,.08), rgba(17,17,17,.95)); }
+.climbing-card { background: linear-gradient(135deg, rgba(126,184,170,.08), rgba(17,17,17,.95)); }
+.running-card { background: linear-gradient(135deg, rgba(255,170,170,.08), rgba(17,17,17,.95)); }
+.animal-card { background: linear-gradient(135deg, rgba(182,226,164,.08), rgba(17,17,17,.95)); }
+.curiosity-card { background: linear-gradient(135deg, rgba(255,224,140,.08), rgba(17,17,17,.95)); }
+
+.nature-card::after, .cooking-card::after { content: '🍳'; }
 .animal-card::after { content: '🐾'; }
-.sport-card::after { content: '👟'; }
 .running-card::after { content: '🏃'; }
 .climbing-card::after { content: '⛰️'; }
-.design-card::after { content: '✏️'; }
-.impact-card::after { content: '🌍'; }
+.writing-card::after { content: '✍️'; }
+.creative-card::after { content: '🎨'; }
+.detail-card::after { content: '✨'; }
 .curiosity-card::after { content: '🤔'; }
 
 .ingredient-card span {
@@ -516,9 +545,10 @@ header nav ul li a[aria-current="page"] {
   justify-content: center;
   width: 2.2rem;
   height: 2.2rem;
+  flex-shrink: 0;
   border: 1px solid rgba(198,184,165,.32);
   border-radius: 50%;
-  background: rgba(198,184,165,.04);
+  background: rgba(198,184,165,.06);
   color: var(--accent);
   font-family: var(--mono);
   font-size: .58rem;
@@ -526,15 +556,21 @@ header nav ul li a[aria-current="page"] {
 }
 
 .ingredient-card strong {
-  font-size: 1.15rem;
+  margin: 0;
+  color: var(--text);
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
   font-weight: 500;
+  line-height: 1.2;
   letter-spacing: -.04em;
 }
 
 .ingredient-card small {
+  display: block;
+  margin: 0;
   color: var(--muted);
   font-size: .8rem;
-  line-height: 1.55;
+  line-height: 1.6;
+  letter-spacing: .01em;
 }
 
 .story-reveal {
@@ -660,6 +696,12 @@ header nav ul li a[aria-current="page"] {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
+}
+
+@media (max-width: 1100px) {
+  .story-reveal-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 800px) {
@@ -1243,9 +1285,9 @@ body.vaardigheden section ul li:hover {
 
 /* Contact page */
 body.contactformulier main {
-  width: min(100% - 2 * var(--gutter), 850px);
+  width: min(100%, 850px);
   margin: 0 auto;
-  padding: 10rem 0 7rem;
+  padding: 10rem var(--gutter) 7rem;
 }
 
 body.contactformulier section {
@@ -1428,9 +1470,9 @@ body.contactformulier .social-media ul li a:hover {
 
 /* Project detail page â€” bookszoeker legacy page */
 body.boekenzoeker main {
-  width: min(100% - 2 * var(--gutter), 1200px);
+  width: min(100%, 1200px);
   margin: 0 auto;
-  padding: 10rem 0 8rem;
+  padding: 10rem var(--gutter) 8rem;
 }
 
 body.boekenzoeker main > div {
@@ -1902,8 +1944,19 @@ footer p {
     text-transform: none;
   }
 
-  .home section:first-of-type h1 {
-    font-size: clamp(3.4rem, 16vw, 6rem);
+  .home section:first-of-type h1,
+  .intro h1,
+  .intro h2,
+  body.boekenzoeker .hero h1 {
+    max-width: 100%;
+    font-size: clamp(2.5rem, 12vw, 4.2rem);
+    line-height: .92;
+    letter-spacing: -.06em;
+  }
+
+  .home section:first-of-type h1 span,
+  body.boekenzoeker .hero h1 span {
+    white-space: normal;
   }
 
   .home section:first-of-type p {
@@ -1918,11 +1971,6 @@ footer p {
 
   .intro {
     padding: 8rem 1.5rem 3rem;
-  }
-
-  .intro h1,
-  .intro h2 {
-    font-size: clamp(3.2rem, 15vw, 5rem);
   }
 
   .project-cards {
