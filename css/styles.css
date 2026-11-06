@@ -751,6 +751,25 @@ header nav ul li a[aria-current="page"] {
   .ingredient-card:nth-child(even) {
     transform: none;
   }
+
+  .vaardigheden-sectie {
+    margin-top: 2.5rem;
+    padding: 1.5rem 0;
+  }
+
+  .vaardigheden-content {
+    gap: 1rem;
+    width: calc(100% - 2rem);
+    margin: 0 auto;
+  }
+
+  .vaardigheden-content article {
+    padding: 1.4rem 1rem;
+  }
+
+  .language-list li {
+    padding: .9rem 0;
+  }
 }
 
 /* Intro and project overview */
@@ -1175,7 +1194,7 @@ body.vaardigheden section ul li:hover {
 .vaardigheden-content article {
   width: auto;
   margin: 0;
-  padding: 1.8rem 1.5rem;
+  padding: 2.2rem 1.8rem;
   border: 1px solid rgba(255,255,255,.08);
   background: rgba(255,255,255,.015);
   box-shadow: none;
@@ -1199,7 +1218,7 @@ body.vaardigheden section ul li:hover {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: .8rem 0;
+  padding: 1rem 0;
   border-bottom: 1px solid rgba(255,255,255,.08);
   color: var(--text);
   font-size: .95rem;
@@ -1239,10 +1258,10 @@ body.vaardigheden section ul li:hover {
 
 .strength-card blockquote {
   margin: 0;
-  padding: 1rem 0 0;
+  padding: 1.3rem 0 0;
   color: var(--text);
   font-size: clamp(1.2rem, 2vw, 1.8rem);
-  line-height: 1.35;
+  line-height: 1.45;
   letter-spacing: -.04em;
 }
 
@@ -1888,13 +1907,56 @@ footer p {
   }
 
   .home section:nth-of-type(3) > div,
-  .project-cards {
+  .project-cards,
+  .vaardigheden-content {
     grid-template-columns: 1fr;
+  }
+
+  .project-cards article,
+  .home section:nth-of-type(3) article,
+  .ingredient-card,
+  .story-option,
+  .contact-icon,
+  .carousel-container,
+  body.boekenzoeker section,
+  .vaardigheden-content article {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .language-list li {
+    gap: .5rem;
+    font-size: .88rem;
+  }
+
+  .strength-card blockquote {
+    font-size: clamp(1.12rem, 5vw, 1.5rem);
   }
 
   .photo-section {
     grid-template-columns: 1fr;
     padding: 4rem 1.5rem;
+  }
+
+  h1,
+  h2 {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .home section:first-of-type h1,
+  .intro h1,
+  .intro h2,
+  body.boekenzoeker .hero h1 {
+    font-size: clamp(2.6rem, 8vw, 4.1rem);
+    line-height: .94;
+    letter-spacing: -.06em;
+  }
+
+  body.boekenzoeker .hero-text {
+    grid-template-columns: 1fr;
   }
 
   body.vaardigheden main {
@@ -1949,9 +2011,11 @@ footer p {
   .intro h2,
   body.boekenzoeker .hero h1 {
     max-width: 100%;
-    font-size: clamp(2.5rem, 12vw, 4.2rem);
+    font-size: clamp(2.2rem, 11vw, 3.6rem);
     line-height: .92;
-    letter-spacing: -.06em;
+    letter-spacing: -.05em;
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   .home section:first-of-type h1 span,
@@ -1967,6 +2031,16 @@ footer p {
   .skills-section,
   .vaardigheden-content {
     grid-template-columns: 1fr;
+  }
+
+  .ingredient-card,
+  .story-option,
+  .contact-icon,
+  body.boekenzoeker section,
+  .carousel-container {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 
   .intro {
