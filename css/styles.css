@@ -328,7 +328,8 @@ header nav ul li a[aria-current="page"] {
 
 /* Home â€” about */
 .home section:nth-of-type(2) {
-  padding: clamp(5rem, 10vw, 10rem) var(--gutter);
+  min-height: 100vh;
+  padding: clamp(6rem, 10vw, 10rem) var(--gutter);
   background: var(--surface);
   text-align: left;
 }
@@ -360,10 +361,14 @@ header nav ul li a[aria-current="page"] {
 
 /* Home â€” selected projects */
 .home section:nth-of-type(3) {
-  padding: clamp(5rem, 9vw, 9rem) var(--gutter);
+  min-height: 100vh;
+  padding: clamp(6rem, 9vw, 9rem) var(--gutter);
   background: var(--bg);
   color: var(--text);
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .home section:nth-of-type(3) h2 {
@@ -403,12 +408,20 @@ header nav ul li a[aria-current="page"] {
   width: 100%;
   aspect-ratio: 4 / 3;
   height: auto;
+  padding: .75rem;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.02));
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: .28rem;
+  box-shadow: 0 0 0 4px rgba(245,238,227,.08), 0 18px 26px rgba(0,0,0,.12);
   object-fit: cover;
-  transition: transform .7s cubic-bezier(.2,.7,.2,1);
+  object-position: center;
+  transition: transform .7s cubic-bezier(.2,.7,.2,1), box-shadow .3s ease;
 }
 
 .home section:nth-of-type(3) article:hover img {
-  transform: scale(1.025);
+  transform: none;
+  box-shadow: 0 0 0 4px rgba(245,238,227,.08), 0 22px 30px rgba(0,0,0,.16);
 }
 
 .home section:nth-of-type(3) article h3 {
@@ -453,9 +466,13 @@ header nav ul li a[aria-current="page"] {
 
 /* Home â€” skills */
 .home section:nth-of-type(4) {
-  padding: clamp(5rem, 9vw, 9rem) var(--gutter);
+  min-height: 100vh;
+  padding: clamp(6rem, 9vw, 9rem) var(--gutter);
   background: var(--surface);
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .home section:nth-of-type(4) h2 {
@@ -1004,7 +1021,7 @@ header nav ul li a[aria-current="page"] {
 .photo-section {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+  grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
   align-items: center;
   gap: clamp(2rem, 7vw, 7rem);
   padding: clamp(4rem, 9vw, 9rem) var(--gutter);
@@ -1034,6 +1051,7 @@ header nav ul li a[aria-current="page"] {
 .text-left {
   flex: initial;
   text-align: left;
+  align-self: center;
 }
 
 .text-left h2 {
@@ -1570,8 +1588,11 @@ body.contactformulier .contact-icon:hover {
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
   align-items: center;
   gap: 2rem;
-  padding: clamp(5rem, 9vw, 9rem) var(--gutter);
-  background: var(--surface);
+  min-height: 100vh;
+  padding: clamp(6rem, 9vw, 9rem) var(--gutter);
+  background: #050505;
+  border-top: 1px solid rgba(255,255,255,.08);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
 }
 
 .contact-fun-copy small {
