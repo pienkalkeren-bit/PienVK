@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Gallery | Pien van Kalkeren</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+</head>
+<body class="gallery-page">
+    <header>
+        <nav>
+            <a href="./index.html">Pien van Kalkeren</a>
+            <ul>
+                <li><a href="./overmij.html">About Me</a></li>
+                <li><a href="./projecten.html">Projects</a></li>
+                <li><a href="./gallery.html" aria-current="page">Gallery</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+
+            <div class="hamburger">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="gallery-hero intro">
+            <p class="eyebrow">Selected moments</p>
+            <h1>Art gallery</h1>
+            <p>Some of the images, textures, and scenes that inspire my visual language and creative process.</p>
+        </section>
+
+        <section class="gallery-grid">
+            <article class="gallery-card" data-title="Animal study" data-story="This image reflects my love for animals and the calm, careful attention they inspire in me. It captures the feeling of softness, patience, and the deep connection I feel with the natural world.">
+                <img src="./Image/fotos/animal picture.JPG" alt="Animal-inspired artwork">
+                <button class="gallery-open-btn" type="button">View story</button>
+            </article>
+
+            <article class="gallery-card" data-title="Process" data-story="This work is about how I think visually: layered, curious, and experimental. It represents the creative process behind my design work, where ideas take shape through observation, mood, and iteration.">
+                <img src="./Image/fotos/Imagebird2.JPG" alt="Creative design composition">
+                <button class="gallery-open-btn" type="button">View story</button>
+            </article>
+
+            <article class="gallery-card" data-title="Nature" data-story="Nature is one of my biggest inspirations. This image brings together the stillness and energy I feel when I’m outside, reminding me that creativity often grows in the quietest moments.">
+                <img src="./Image/fotos/birds.JPG" alt="Birds in nature">
+                <button class="gallery-open-btn" type="button">View story</button>
+            </article>
+
+            <article class="gallery-card" data-title="Movement" data-story="Movement has always shaped me. Whether through running, climbing, or simply being in motion, it reminds me that growth comes from effort, persistence, and a willingness to keep going.">
+                <img src="./Image/fotos/Monkeypicture1.JPG" alt="Movement and climb portrait">
+                <button class="gallery-open-btn" type="button">View story</button>
+            </article>
+
+            <article class="gallery-card" data-title="Self portrait" data-story="This portrait reflects the person behind the work: grounded, reflective, and honest. It’s a reminder that my practice is shaped by both my personality and the values I carry into my creative work.">
+                <img src="./Image/fotos/Animalbird4.JPG" alt="Portrait image">
+                <button class="gallery-open-btn" type="button">View story</button>
+            </article>
+
+            <article class="gallery-card" data-title="Energy" data-story="This image captures a sense of life, motion, and momentum. It represents the way I approach design and creativity: with energy, curiosity, and a desire to make work feel alive.">
+                <img src="./Image/fotos/Animalbird6.JPG" alt="Creative photo from an outdoor moment">
+                <button class="gallery-open-btn" type="button">View story</button>
+            </article>
+        </section>
+    </main>
+
+    <div class="gallery-modal" id="galleryModal" aria-hidden="true">
+        <div class="gallery-modal-content" role="dialog" aria-modal="true" aria-labelledby="galleryModalTitle">
+            <button class="gallery-modal-close" aria-label="Close">×</button>
+            <img id="galleryModalImage" src="" alt="">
+            <div class="gallery-modal-copy">
+                <p class="eyebrow">Story</p>
+                <h3 id="galleryModalTitle">Title</h3>
+                <p id="galleryModalText"></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Pien van Kalkeren. All rights reserved.</p>
+    </footer>
+
+    <script src="./java/script.js"></script>
+</body>
+</html>

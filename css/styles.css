@@ -1035,9 +1035,9 @@ body.projecten .intro p {
 .photo-section {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   align-items: center;
-  gap: clamp(2rem, 7vw, 7rem);
+  gap: clamp(2rem, 6vw, 5rem);
   padding: clamp(4rem, 9vw, 9rem) var(--gutter);
   margin: 0;
   border: 0;
@@ -1064,6 +1064,8 @@ body.projecten .intro p {
 
 .text-left {
   flex: initial;
+  width: 100%;
+  max-width: 72rem;
   text-align: left;
   align-self: center;
 }
@@ -1725,13 +1727,17 @@ body.boekenzoeker .hero {
 
 body.boekenzoeker .hero-text {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 2.35fr);
+  grid-template-areas:
+    'image title'
+    'image text';
   align-items: center;
   gap: clamp(2rem, 5vw, 4rem);
   padding: clamp(1.5rem, 3vw, 2rem) 0 0;
 }
 
 body.boekenzoeker .hero img {
+  grid-area: image;
   width: 100%;
   max-height: 620px;
   object-fit: cover;
@@ -1742,7 +1748,9 @@ body.boekenzoeker .hero img {
 }
 
 body.boekenzoeker .hero h1 {
-  margin: 0 0 2.5rem;
+  grid-area: title;
+  width: 100%;
+  margin: 0;
   color: var(--text);
   background: none;
   font-size: clamp(3rem, 7vw, 7rem);
@@ -1750,6 +1758,9 @@ body.boekenzoeker .hero h1 {
 }
 
 body.boekenzoeker .hero p {
+  grid-area: text;
+  width: 100%;
+  max-width: none;
   margin: 0;
   color: var(--muted);
   font-size: clamp(1.05rem, 1.5vw, 1.3rem);
@@ -1758,6 +1769,193 @@ body.boekenzoeker .hero p {
 
 body.boekenzoeker img {
   border-radius: 0;
+}
+
+body.gallery-page {
+  background: var(--bg);
+}
+
+body.gallery-page main {
+  width: min(100%, 1400px);
+  margin: 0 auto;
+  padding: 7rem var(--gutter) 6rem;
+}
+
+.gallery-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  min-height: 52vh;
+  padding: 0 0 2rem;
+}
+
+.gallery-hero h1 {
+  margin: 0 0 1.2rem;
+  max-width: 10ch;
+  font-size: clamp(3rem, 7vw, 7rem);
+  letter-spacing: -.08em;
+}
+
+.gallery-hero p:last-child {
+  max-width: 42rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(1rem, 1.4vw, 1.4rem);
+  line-height: 1.7;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .85rem;
+  padding-top: 1.5rem;
+}
+
+.gallery-card {
+  position: relative;
+  display: block;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform .28s ease, opacity .28s ease, filter .28s ease;
+}
+
+.gallery-card:hover {
+  transform: scale(1.025);
+  opacity: .96;
+  filter: saturate(1.05);
+}
+
+.gallery-card img {
+  display: block;
+  width: 100%;
+  height: 310px;
+  object-fit: cover;
+  background: rgba(255,255,255,.02);
+  transition: transform .28s ease;
+}
+
+.gallery-card:hover img {
+  transform: scale(1.04);
+}
+
+.gallery-open-btn {
+  position: absolute;
+  right: .9rem;
+  bottom: .9rem;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 999px;
+  background: rgba(9,9,9,.58);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .65rem .9rem;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transition: background .25s ease, transform .25s ease;
+}
+
+.gallery-open-btn:hover {
+  background: rgba(198,184,165,.18);
+  transform: translateY(-1px);
+}
+
+.gallery-card.wide img {
+  height: 310px;
+}
+
+.gallery-card.tall img {
+  height: 310px;
+}
+
+.gallery-card-copy {
+  display: none;
+}
+
+.gallery-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(9,9,9,.82);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  transition: opacity .28s ease;
+}
+
+.gallery-modal.is-open {
+  display: flex;
+  opacity: 1;
+}
+
+.gallery-modal-content {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  gap: 2rem;
+  width: min(100%, 1100px);
+  padding: 1.5rem;
+  background: rgba(17,17,17,.96);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 1.5rem;
+  box-shadow: 0 32px 80px rgba(0,0,0,.3);
+  transform: translateY(18px) scale(.98);
+  opacity: 0;
+  transition: transform .28s ease, opacity .28s ease;
+}
+
+.gallery-modal.is-open .gallery-modal-content {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.gallery-modal-content img {
+  width: 100%;
+  max-height: 70vh;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.gallery-modal-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.gallery-modal-copy h3 {
+  margin: 0 0 1rem;
+  color: var(--text);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: -.06em;
+}
+
+.gallery-modal-copy p {
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.gallery-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 999px;
+  background: rgba(255,255,255,.02);
+  color: var(--text);
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
 body.boekenzoeker main h3 {
@@ -2174,6 +2372,14 @@ footer p {
   }
 
   body.boekenzoeker .hero-text {
+    grid-template-columns: 1fr;
+  }
+
+  body.gallery-page main {
+    padding-top: 8rem;
+  }
+
+  .gallery-grid {
     grid-template-columns: 1fr;
   }
 
