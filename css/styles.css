@@ -644,6 +644,14 @@ header nav ul li a[aria-current="page"] {
   line-height: .96;
 }
 
+.story-reveal h3 {
+  margin: 0 0 2rem;
+  color: var(--text);
+  font-size: clamp(2.7rem, 6vw, 4rem);
+  letter-spacing: -.07em;
+  line-height: .96;
+}
+
 .story-reveal-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -742,7 +750,7 @@ header nav ul li a[aria-current="page"] {
 }
 
 .story-panel p {
-  margin: 0;
+  margin: 0.5cm;
   color: var(--muted);
   font-size: clamp(.95rem, 1.1vw, 1.05rem);
   line-height: 1.75;
@@ -1245,7 +1253,7 @@ body.vaardigheden section ul li:hover {
 }
 
 .mini-label {
-  margin: 0 0 .8rem;
+  margin: 0 3rem;
   color: var(--muted);
   font-family: var(--mono);
   font-size: .62rem;
@@ -1257,6 +1265,7 @@ body.vaardigheden section ul li:hover {
   display: flex;
   flex-wrap: wrap;
   gap: .6rem;
+  margin:1cm;
 }
 
 .skill-tag {
